@@ -17,14 +17,21 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  uploadLink() {
+  uploadLink(e: any) {
+    e.preventDefault();
     this.iframeLink = $('#link').val();
     this.iframe.emit(this.iframeLink);
   }
 
-  getIframeDOM() {
+  getIframeDOM(e: any) {
+    e.preventDefault();
     const myIframe = document.getElementsByTagName("iframe")[0];
     myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
+  }
+
+  openNav() {
+    document.getElementById("mySidebar").style.width = "280px";
+    document.getElementById('iframe').style.width = '84vw';
   }
 
 }

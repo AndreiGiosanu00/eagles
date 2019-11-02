@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #563D7C;">
-  <a class="navbar-brand" href="#">Eagles</a>
+  <a class="navbar-brand" (click)="openNav()">Eagles</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -7,9 +7,9 @@
   <div class="collapse navbar-collapse  " id="navbarTogglerDemo02">
     <form class="form-inline my-2 my-lg-0" style="margin-left: 15%;">
       <input id="link" class="form-control mr-sm-2" type="search" placeholder="Insert link here" style="width: 20vw;">
-      <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="uploadLink()">Upload</button>
+      <button class="btn btn-outline-info my-2 my-sm-0" type="button" (click)="uploadLink($event)">Upload</button>
     </form>
-    <button (click)="getIframeDOM()" class="btn btn-md btn-outline-danger" style="margin-left: 40%;">Revert modifications</button>
-    <button (click)="getIframeDOM()" class="btn btn-md btn-outline-success" style="margin-left: 10px;">Post modifications</button>
+    <button (click)="getIframeDOM($event)" class="btn btn-md btn-outline-danger" style="margin-left: 40%;">Revert modifications</button>
+    <button (click)="getIframeDOM($event)" class="btn btn-md btn-outline-success" style="margin-left: 10px;">Post modifications</button>
   </div>
 </nav>
