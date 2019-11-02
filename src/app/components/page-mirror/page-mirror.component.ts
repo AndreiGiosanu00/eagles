@@ -23,9 +23,19 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     _window().onmessage = (e: any) => {
-      this.parserService.element = e;
+      if(e.data.length === 0)
+        return;
+      this.parserService.element = JSON.parse(e.data);
     };
   }
 
   ngAfterViewInit() {}
+  
+  getIframeDOM(e:any) {
+    const myIframe = document.getElementsByTagName("iframe")[0];
+    this.parserService.element.text = "alalala";
+    myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
+    e.preventDefault()
+    return false;
+  }
 }
