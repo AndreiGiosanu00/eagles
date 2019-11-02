@@ -1,6 +1,12 @@
 /* tslint:disable */
 import { Component } from '@angular/core';
 
+window.onmessage = function(e){
+  
+      alert(e.data);
+  
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

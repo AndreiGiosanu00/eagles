@@ -20,11 +20,8 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
   }
 
   getIframeDOM(){
-    if(this.iframe.nativeElement){
-     var wn = this.iframe.nativeElement.contentWindow;
-     wn.postMessage('Hello to iframe from parent!', 'http://localhost:3000');
+    var myIframe = document.getElementsByTagName("iframe")[0];
+    myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
   }
-
-}
 
 }
