@@ -10,8 +10,6 @@ export class AppComponent {
   title = 'eagles';
   iframeUrl = 'http://localhost:3000';
 
-  currentElement:any
-
   getLink(link: any) {
     this.iframeUrl = link;
   }
