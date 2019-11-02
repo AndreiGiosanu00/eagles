@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+/* tslint:disable */
+import {Component, Input, OnInit} from '@angular/core';
+import {DomSanitizer} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-page-mirror',
@@ -7,9 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageMirrorComponent implements OnInit {
 
-  constructor() { }
+  @Input() iframeUrl;
 
-  ngOnInit() {
-  }
+  constructor(public domSanitizationService: DomSanitizer) {}
+
+  ngOnInit() {}
 
 }
