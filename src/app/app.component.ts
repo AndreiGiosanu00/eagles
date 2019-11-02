@@ -2,9 +2,7 @@
 import { Component } from '@angular/core';
 
 window.onmessage = function(e){
-  
-      alert(e.data);
-  
+
 }
 
 @Component({
