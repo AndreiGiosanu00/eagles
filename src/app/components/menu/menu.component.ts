@@ -1,5 +1,6 @@
 /* tslint:disable */
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ParserService} from '../../services/parser.service';
 
 declare let $: any;
 
@@ -13,7 +14,7 @@ export class MenuComponent implements OnInit {
   @Output() iframe: EventEmitter<any> = new EventEmitter<any>();
   iframeLink: string;
 
-  constructor() { }
+  constructor(private parserService: ParserService) { }
 
   ngOnInit() {}
 
@@ -26,7 +27,12 @@ export class MenuComponent implements OnInit {
   getIframeDOM(e: any) {
     e.preventDefault();
     const myIframe = document.getElementsByTagName("iframe")[0];
-    myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
+    this.parserService.element.text = "alalala";
+    this.parserService.element.styles.push({
+      property: "color",
+      value: "red"
+    })
+    myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
 
   openNav() {
