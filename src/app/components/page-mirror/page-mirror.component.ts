@@ -22,15 +22,12 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
               public parserService: ParserService) {}
 
   ngOnInit() {
-    _window().onmessage = this.setElement;
+    _window().onmessage = (e: any) => {
+      this.parserService.element = e;
+    };
   }
 
-  ngAfterViewInit() {
-  }
-
-  setElement(event: any) {
-    this.parserService.element = event;
-  }
+  ngAfterViewInit() {}
 
   getIframeDOM() {
     const myIframe = document.getElementsByTagName("iframe")[0];
