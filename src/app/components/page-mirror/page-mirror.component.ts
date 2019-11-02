@@ -30,7 +30,7 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {}
-
+  
   getIframeDOM(e:any) {
     const myIframe = document.getElementsByTagName("iframe")[0];
     this.parserService.element.text = "alalala";
@@ -38,5 +38,4 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
     e.preventDefault()
     return false;
   }
-
 }

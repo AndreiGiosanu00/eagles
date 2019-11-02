@@ -2,6 +2,17 @@
     background-color: rgb(208,208,208);
     width: 18.5vw;
     border-right: 1px solid black;
-    height: 100vh;
+    height: 93vh;
     margin: 0 !important;
+}
+
+.sidebar {
+  width: 0;
+  height: 93vh;
+  background-color: rgba(108, 117, 125, 0.5);
+  transition: 0.5s;
+}
+
+#main {
+  transition: 0.5s;
 }
