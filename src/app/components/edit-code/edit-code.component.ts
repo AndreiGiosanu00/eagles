@@ -11,14 +11,9 @@ declare let $: any;
 })
 export class EditCodeComponent implements OnInit {
 
-  styles: any;
-
   constructor(private parserService: ParserService) { }
 
-  ngOnInit() {
-    // this.styles = this.parserService.element.target.style;
-    // console.log(this.styles);
-  }
+  ngOnInit() {}
 
   /* Set the width of the sidebar to 0 and the left margin of the page content to 0 */
   closeNav() {

@@ -16,3 +16,7 @@
 #main {
   transition: 0.5s;
 }
+
+.close-btn {
+  float: right;
+}
