@@ -1,0 +1,6 @@
+.edit-container{
+    background-color: rgb(208,208,208);
+    max-width: 20%;
+    border-right: 1px solid black;
+    height: 100vh;
+}
