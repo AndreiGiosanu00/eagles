@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { PageMirrorComponent } from './components/page-mirror/page-mirror.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { EditCodeComponent } from './components/edit-code/edit-code.component';
-import { ActionsComponent } from './components/actions/actions.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { ActionsComponent } from './components/actions/actions.component';
     PageMirrorComponent,
     MenuComponent,
     EditCodeComponent,
-    ActionsComponent
   ],
   imports: [
     BrowserModule,

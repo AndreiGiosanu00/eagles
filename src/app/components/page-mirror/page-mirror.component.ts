@@ -1,6 +1,10 @@
+/* tslint:disable */
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-window.onmessage = function(e){
+
+
+function _window() : any {
+  return window;
 }
 
 @Component({
@@ -18,14 +22,19 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
 
   constructor(public domSanitizationService: DomSanitizer) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    _window().onmessage = this.setElement;
+  }
 
   ngAfterViewInit() {
   }
 
-  getIframeDOM(){
-    var myIframe = document.getElementsByTagName("iframe")[0];
-    myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
+  setElement(event: any) {
+    console.log(event);
   }
 
+  getIframeDOM() {
+    const myIframe = document.getElementsByTagName("iframe")[0];
+    myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
+  }
 }
