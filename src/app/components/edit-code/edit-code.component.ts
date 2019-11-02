@@ -13,8 +13,7 @@ export class EditCodeComponent implements OnInit {
   constructor(private parserService: ParserService) { }
 
   ngOnInit() {
-    this.styles = this.parserService.element.target.style;
-    console.log(this.styles);
+    
   }
 
 }
