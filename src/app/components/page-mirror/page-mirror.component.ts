@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-page-mirror',
@@ -9,10 +10,11 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
 
   @ViewChild('iframe', {static: true}) iframe: ElementRef;
 
-  constructor() { }
+  @Input() iframeUrl;
 
-  ngOnInit() {
-  }
+  constructor(public domSanitizationService: DomSanitizer) {}
+
+  ngOnInit() {}
 
   ngAfterViewInit() {
   }

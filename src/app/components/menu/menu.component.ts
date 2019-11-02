@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+/* tslint:disable */
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+
+declare let $: any;
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +10,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
+  @Output() iframe: EventEmitter<any> = new EventEmitter<any>();
+  iframeLink: string;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  uploadLink() {
+    this.iframeLink = $('#link').val();
+    this.iframe.emit(this.iframeLink);
   }
 
 }

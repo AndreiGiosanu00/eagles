@@ -1,3 +1,4 @@
+/* tslint:disable */
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'eagles';
+  iframeUrl = 'http://localhost:3000';
+
+  getLink(link: any) {
+    this.iframeUrl = link;
+  }
 }
