@@ -3,15 +3,8 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '
 import { DomSanitizer } from '@angular/platform-browser';
 
 function _window() : any {
-  // return the global native browser window object
   return window;
 }
-
-
-// window.onmessage = function(e){
-//   localStorage.setItem('element', JSON.stringify(e));
-// };
-
 
 @Component({
   selector: 'app-page-mirror',
