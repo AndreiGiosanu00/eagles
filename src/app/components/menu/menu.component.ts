@@ -22,4 +22,9 @@ export class MenuComponent implements OnInit {
     this.iframe.emit(this.iframeLink);
   }
 
+  getIframeDOM() {
+    const myIframe = document.getElementsByTagName("iframe")[0];
+    myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
+  }
+
 }

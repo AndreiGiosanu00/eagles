@@ -28,9 +28,4 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {}
-
-  getIframeDOM() {
-    const myIframe = document.getElementsByTagName("iframe")[0];
-    myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
-  }
 }
