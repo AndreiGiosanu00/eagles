@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+declare let window:any;
 
 @Component({
   selector: 'app-page-mirror',
@@ -12,9 +13,13 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
 
   @Input() iframeUrl;
 
+  currentElement: any;
+
   constructor(public domSanitizationService: DomSanitizer) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.initializeWindow();
+  }
 
   ngAfterViewInit() {
   }
@@ -22,6 +27,14 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
   getIframeDOM(){
     var myIframe = document.getElementsByTagName("iframe")[0];
     myIframe.contentWindow.postMessage('hello', 'http://localhost:3000');
+  }
+
+  initializeWindow(){
+    let that = this;
+    window.onmessage = function(e){
+      that.currentElement = e;
+    }
+    console.log
   }
 
 }

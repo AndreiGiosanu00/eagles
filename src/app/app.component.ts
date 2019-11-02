@@ -1,10 +1,6 @@
 /* tslint:disable */
 import { Component } from '@angular/core';
 
-window.onmessage = function(e){
-
-}
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,6 +9,8 @@ window.onmessage = function(e){
 export class AppComponent {
   title = 'eagles';
   iframeUrl = 'http://localhost:3000';
+
+  currentElement:any
 
   getLink(link: any) {
     this.iframeUrl = link;
