@@ -1,6 +1,7 @@
 /* tslint:disable */
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import {ParserService} from '../../services/parser.service';
 
 
 function _window() : any {
@@ -15,12 +16,10 @@ function _window() : any {
 export class PageMirrorComponent implements OnInit, AfterViewInit {
 
   @ViewChild('iframe', {static: true}) iframe: ElementRef;
-
   @Input() iframeUrl;
 
-  currentElement: any;
-
-  constructor(public domSanitizationService: DomSanitizer) {}
+  constructor(public domSanitizationService: DomSanitizer,
+              public parserService: ParserService) {}
 
   ngOnInit() {
     _window().onmessage = this.setElement;
@@ -30,7 +29,7 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
   }
 
   setElement(event: any) {
-    console.log(event);
+    this.parserService.element = event;
   }
 
   getIframeDOM() {
