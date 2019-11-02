@@ -37,7 +37,7 @@ export class MenuComponent implements OnInit {
 
   openNav() {
     document.getElementById("mySidebar").style.width = "280px";
-    document.getElementById('iframe').style.width = '84vw';
+    document.getElementById('iframe').style.width = '82vw';
   }
 
 }
