@@ -148,5 +148,8 @@ export class EditCodeComponent implements OnInit {
 
   reorderElement() {
     // the code for reorder
+    this.parserService.element.changeOrder = true;
+    const myIframe = document.getElementsByTagName("iframe")[0];
+    myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
 }
