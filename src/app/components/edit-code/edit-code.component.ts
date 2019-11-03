@@ -147,4 +147,8 @@ export class EditCodeComponent implements OnInit {
     }
     return i;
   }
+
+  reorderElement() {
+    // the code for reorder
+  }
 }
