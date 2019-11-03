@@ -39,8 +39,13 @@ export class MenuComponent implements OnInit {
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
 
+
   revertModifications(){
     const myIframe = document.getElementsByTagName("iframe")[0];
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.originalElement.pop()), 'http://localhost:3000');
+    document.getElementById("mySidebar").style.width = "0";
+    setTimeout(() => {
+      document.getElementById('iframe').style.width = '100vw';
+    }, 500);
   }
 }
