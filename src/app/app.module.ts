@@ -9,6 +9,7 @@ import { EditCodeComponent } from './components/edit-code/edit-code.component';
 import {FormsModule} from '@angular/forms';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ColorPickerModule} from 'ngx-color-picker';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     FormsModule,
     AngularFontAwesomeModule,
-    NgbModule
+    NgbModule,
+    ColorPickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

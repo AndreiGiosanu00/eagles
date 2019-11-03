@@ -22,6 +22,8 @@ export class EditCodeComponent implements OnInit {
     src: ''
   };
 
+  color: any;
+
   constructor(private parserService: ParserService,
               private modalService: NgbModal) {
     this.modalOptions = {
@@ -95,5 +97,40 @@ export class EditCodeComponent implements OnInit {
 
   addNewElement() {
     // add element code  this.newElement
+  }
+
+  colorChanged() {
+    if (!this.arrayHasProperty(this.parserService.element.styles, 'background-color')) {
+      this.parserService.element.styles.push({
+        property: 'background-color',
+        value: this.color
+      });
+    } else {
+      this.parserService.element.styles[this.arrayHasProperty(this.parserService.element.styles, 'background-color')].value = this.color;
+    }
+  }
+
+  colorChangedNewElement() {
+    if (!this.arrayHasProperty(this.newElement.styles, 'background-color')) {
+      this.newElement.styles.push({
+        property: 'background-color',
+        value: this.color
+      });
+    } else {
+      this.newElement.styles[this.arrayHasProperty(this.newElement.styles, 'background-color')].value = this.color;
+    }
+  }
+
+  arrayHasProperty(array: any[], property: string): any {
+    let i = -1;
+    array.forEach((item, index) => {
+      if (item.property === property) {
+        i = index;
+      }
+    });
+    if (i === -1) {
+      return false;
+    }
+    return i;
   }
 }
