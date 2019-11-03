@@ -38,4 +38,9 @@ export class MenuComponent implements OnInit {
     const myIframe = document.getElementsByTagName("iframe")[0];
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
+
+  revertModifications(){
+    const myIframe = document.getElementsByTagName("iframe")[0];
+    myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.originalElement.pop()), 'http://localhost:3000');
+  }
 }

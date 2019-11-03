@@ -25,6 +25,7 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
       if(e.data.length === 0)
         return;
       this.parserService.element = JSON.parse(e.data);
+      this.parserService.originalElement.push(JSON.parse(e.data));
       this.openNav();
     };
   }
