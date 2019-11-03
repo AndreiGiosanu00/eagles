@@ -1,6 +1,7 @@
 /* tslint:disable */
 import { Component, OnInit } from '@angular/core';
 import {ParserService} from '../../services/parser.service';
+import {ModalDismissReasons, NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 
 declare let $: any;
 
@@ -11,7 +12,23 @@ declare let $: any;
 })
 export class EditCodeComponent implements OnInit {
 
-  constructor(private parserService: ParserService) { }
+  modalOptions:NgbModalOptions;
+  closeResult: any;
+  selectValue = 'None';
+  newElement = {
+    text: '',
+    classList: '',
+    styles: [],
+    src: ''
+  };
+
+  constructor(private parserService: ParserService,
+              private modalService: NgbModal) {
+    this.modalOptions = {
+      backdrop:'static',
+      backdropClass:'customBackdrop'
+    }
+  }
 
   ngOnInit() {}
 
@@ -38,8 +55,45 @@ export class EditCodeComponent implements OnInit {
     });
   }
 
+  addNewStyleNewElement() {
+    this.newElement.styles.push({
+      property: '',
+      value: ''
+    });
+  }
+
   removeStyle(index: number) {
     this.parserService.element.styles.splice(index, 1);
   }
 
+  removeStyleNewElement(index: number) {
+    this.newElement.styles.splice(index, 1);
+  }
+
+  open(content) {
+    this.modalService.open(content, this.modalOptions).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
+
+  setSelectedValue(value: any) {
+    this.selectValue = value;
+    console.log(this.selectValue);
+  }
+
+  addNewElement() {
+    // add element code  this.newElement
+  }
 }

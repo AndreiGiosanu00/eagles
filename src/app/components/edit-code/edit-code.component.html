@@ -12,10 +12,82 @@
     <label style="margin-right: 15px;">Element style</label>
     <button type="button" class="btn btn-success btn-circle" (click)="addNewStyle()"><i class="fa fa-plus"></i></button>
     <div *ngFor="let style of parserService.element.styles; let i = index">
-      <input type="text" class="form-control" [value]="style.property" style="width: 40%; float: left; margin-left: 10px; margin-top: 5px;">
+      <input type="text" class="form-control" [value]="style.property" style="width: 40%; float: left; margin-left: 10px; margin-top: 5px;" placeholder="property">
+      <input type="text" class="form-control" [value]="style.value" style="width: 40%; float: left; margin-left: 5px; margin-top: 5px;" placeholder="value">
       <button type="button" class="btn btn-danger btn-circle" (click)="removeStyle(i)" style="float: right; margin-top: 9px; margin-right: 5px;"><i class="fa fa-times"></i></button>
-      <input type="text" class="form-control" [value]="style.value" style="width: 40%; float: right; margin-right: 5px; margin-top: 5px;">
     </div>
   </div>
+  <button class="btn btn-success" style="margin-top: 15px;" (click)="open(mymodal)">Add a new element</button>
   <button class="btn btn-danger" (click)="deleteElement()" style="margin-top: 15px;">Delete element</button>
+
 </div>
+
+
+<ng-template #mymodal let-modal role="dialog">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Add a new element</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+      <label for="selectElement">Select element type</label>
+      <select [(ngModel)]="selectValue" class="form-control" id="selectElement" (change)="setSelectedValue($event.target.value)">
+        <option>DIV</option>
+        <option>BUTTON</option>
+        <option>SPAN</option>
+        <option>IMG</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <div *ngIf="selectValue == 'DIV' || selectValue == 'BUTTON' || selectValue == 'SPAN'">
+        <div class="form-group">
+          <label for="elementText">Element innerText</label>
+          <textarea [(ngModel)]="newElement.text" class="form-control" id="elementText" placeholder="The element don't have a text"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="elementClasses">Class list</label>
+          <textarea [(ngModel)]="newElement.classList" class="form-control" id="elementClasses" placeholder="The element don't have any css classes"></textarea>
+        </div>
+        <div class="form-group">
+          <label style="margin-right: 15px;">Element style</label>
+          <button type="button" class="btn btn-success btn-circle" (click)="addNewStyleNewElement()"><i class="fa fa-plus"></i></button>
+          <div *ngFor="let style of newElement.styles; let i = index">
+            <input type="text" class="form-control" [value]="style.property" style="width: 40%; float: left; margin-left: 10px; margin-top: 5px;" placeholder="property">
+            <input type="text" class="form-control" [value]="style.value" style="width: 40%; float: left; margin-left: 5px; margin-top: 5px;" placeholder="value">
+            <button type="button" class="btn btn-danger btn-circle" (click)="removeStyleNewElement(i)" style="float: right; margin-top: 9px; margin-right: 5px;"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="selectValue == 'IMG'">
+        <div class="form-group">
+          <label for="elementText">Element innerText</label>
+          <textarea [(ngModel)]="newElement.text" class="form-control" id="elementText" placeholder="The element don't have a text"></textarea>
+        </div>
+        <div class="form-group">
+          <label for="elementClasses">Class list</label>
+          <textarea [(ngModel)]="newElement.classList" class="form-control" id="elementClasses" placeholder="The element don't have any css classes"></textarea>
+        </div>
+        <div class="form-group">
+          <label style="margin-right: 15px;">Element style</label>
+          <button type="button" class="btn btn-success btn-circle" (click)="addNewStyleNewElement()"><i class="fa fa-plus"></i></button>
+          <div *ngFor="let style of newElement.styles; let i = index">
+            <input type="text" class="form-control" [value]="style.property" style="width: 40%; float: left; margin-left: 10px; margin-top: 5px;" placeholder="property">
+            <input type="text" class="form-control" [value]="style.value" style="width: 40%; float: left; margin-left: 5px; margin-top: 5px;" placeholder="value">
+            <button type="button" class="btn btn-danger btn-circle" (click)="removeStyleNewElement(i)" style="float: right; margin-top: 9px; margin-right: 5px;"><i class="fa fa-times"></i></button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imgSrc" style="margin-right: 15px;">Image source</label>
+          <textarea [(ngModel)]="newElement.src" class="form-control" id="imgSrc" placeholder="The element don't have any source"></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer justify-content-between">
+    <button type="button" class="btn btn-success" (click)="modal.close('Save click'); addNewElement()">Add element</button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Close</button>
+  </div>
+</ng-template>
+

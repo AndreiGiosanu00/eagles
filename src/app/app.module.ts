@@ -8,6 +8,7 @@ import { MenuComponent } from './components/menu/menu.component';
 import { EditCodeComponent } from './components/edit-code/edit-code.component';
 import {FormsModule} from '@angular/forms';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    AngularFontAwesomeModule
+    AngularFontAwesomeModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
