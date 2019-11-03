@@ -1,5 +1,5 @@
 /* tslint:disable */
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
 import {ParserService} from '../../services/parser.service';
 
 declare let $: any;
@@ -16,7 +16,17 @@ export class MenuComponent implements OnInit {
 
   constructor(private parserService: ParserService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(localStorage.getItem('elementJson')) {
+      var aux = localStorage.getItem('elementJson');
+      this.parserService.element = JSON.parse(aux);
+      this.getIframeDOM();
+    }
+  }
+
+  @HostListener('window:beforeunload') saveUser() {
+    localStorage.setItem('elementJson', JSON.stringify(this.parserService.element));
+  }
 
   uploadLink(e: any) {
     e.preventDefault();
@@ -24,10 +34,8 @@ export class MenuComponent implements OnInit {
     this.iframe.emit(this.iframeLink);
   }
 
-  getIframeDOM(e: any) {
-    e.preventDefault();
+  getIframeDOM() {
     const myIframe = document.getElementsByTagName("iframe")[0];
-    console.log(this.parserService.element)
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
 
