@@ -30,4 +30,12 @@ export class MenuComponent implements OnInit {
     console.log(this.parserService.element)
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
+
+  revertModifications() {
+    this.parserService.element = {};
+    document.getElementById("mySidebar").style.width = "0";
+    setTimeout(() => {
+      document.getElementById('iframe').style.width = '100vw';
+    }, 500);
+  }
 }
