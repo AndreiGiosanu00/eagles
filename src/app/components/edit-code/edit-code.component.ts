@@ -23,4 +23,8 @@ export class EditCodeComponent implements OnInit {
     }, 500);
   }
 
+  deleteElement() {
+    // delete code
+  }
+
 }
