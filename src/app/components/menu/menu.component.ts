@@ -34,10 +34,4 @@ export class MenuComponent implements OnInit {
     })
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
-
-  openNav() {
-    document.getElementById("mySidebar").style.width = "280px";
-    document.getElementById('iframe').style.width = '80vw';
-  }
-
 }

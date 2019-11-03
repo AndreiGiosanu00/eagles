@@ -3,7 +3,6 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Input } from '
 import { DomSanitizer } from '@angular/platform-browser';
 import {ParserService} from '../../services/parser.service';
 
-
 function _window() : any {
   return window;
 }
@@ -26,16 +25,22 @@ export class PageMirrorComponent implements OnInit, AfterViewInit {
       if(e.data.length === 0)
         return;
       this.parserService.element = JSON.parse(e.data);
+      this.openNav();
     };
   }
 
   ngAfterViewInit() {}
-  
+
   getIframeDOM(e:any) {
     const myIframe = document.getElementsByTagName("iframe")[0];
     this.parserService.element.text = "alalala";
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
     e.preventDefault()
     return false;
+  }
+
+  openNav() {
+    document.getElementById('iframe').style.width = '80vw';
+    document.getElementById("mySidebar").style.width = "280px";
   }
 }

@@ -1,18 +1,21 @@
 <div id="mySidebar" class="sidebar">
   <a href="javascript:void(0)" class="btn btn-dark close-btn" (click)="closeNav()">&times;</a>
-  <div>
-    <label class="label">Element text</label>
-    <textarea>{{parserService.element.text}}</textarea>
+  <div class="form-group">
+    <label for="elementText">Element innerText</label>
+    <textarea [(ngModel)]="parserService.element.text" class="form-control" id="elementText" placeholder="Waiting for data..."></textarea>
   </div>
-  <div>
-    <label class="label">Class list</label>
-    <textarea>{{parserService.element.classList}}</textarea>
+  <div class="form-group">
+    <label for="elementClasses">Class list</label>
+    <textarea [(ngModel)]="parserService.element.classList" class="form-control" id="elementClasses" placeholder="Waiting for data..."></textarea>
   </div>
-  <div>
-    <label class="label">Element style</label>
-    <div *ngFor="let style of parserService.element.styles">
-      <input type="text" [value]="style.property"> and <input type="text" [value]="style.value">
+  <div *ngIf="parserService.element.styles.length" class="form-group">
+    <label style="margin-right: 15px;">Element style</label>
+    <button type="button" class="btn btn-success btn-circle" (click)="addNewStyle()"><i class="fa fa-plus"></i></button>
+    <div *ngFor="let style of parserService.element.styles; let i = index">
+      <input type="text" class="form-control" [value]="style.property" style="width: 40%; float: left; margin-left: 10px; margin-top: 5px;">
+      <button type="button" class="btn btn-danger btn-circle" (click)="removeStyle(i)" style="float: right; margin-top: 9px; margin-right: 5px;"><i class="fa fa-times"></i></button>
+      <input type="text" class="form-control" [value]="style.value" style="width: 40%; float: right; margin-right: 5px; margin-top: 5px;">
     </div>
   </div>
-  <button class="btn btn-danger" (click)="deleteElement()">Delete element</button>
+  <button class="btn btn-danger" (click)="deleteElement()" style="margin-top: 15px;">Delete element</button>
 </div>
