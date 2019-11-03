@@ -9,8 +9,11 @@
 .sidebar {
   width: 0;
   height: 93vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #2F353A;
+  color: white;
   transition: 0.5s;
+  text-align: center;
+  padding-top: 10px;
 }
 
 #main {
@@ -19,4 +22,25 @@
 
 .close-btn {
   float: right;
+  background-color: #2F353A;
+  margin-top: -10px;
+}
+
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  border-radius: 15px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.42857;
 }

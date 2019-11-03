@@ -31,4 +31,15 @@ export class EditCodeComponent implements OnInit {
     this.parserService.element.delete = false;
   }
 
+  addNewStyle() {
+    this.parserService.element.styles.push({
+      property: '',
+      value: ''
+    });
+  }
+
+  removeStyle(index: number) {
+    this.parserService.element.styles.splice(index, 1);
+  }
+
 }
