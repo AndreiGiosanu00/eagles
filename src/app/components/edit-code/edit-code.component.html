@@ -2,16 +2,16 @@
   <a href="javascript:void(0)" class="btn btn-dark close-btn" (click)="closeNav()">&times;</a>
   <div>
     <label class="label">Element text</label>
-    <textarea>{{parserService.element.text}}</textarea>
+    <textarea [(ngModel)]="parserService.element.text"></textarea>
   </div>
   <div>
     <label class="label">Class list</label>
-    <textarea>{{parserService.element.classList}}</textarea>
+    <textarea [(ngModel)]="parserService.element.classList"></textarea>
   </div>
   <div>
     <label class="label">Element style</label>
     <div *ngFor="let style of parserService.element.styles">
-      <input type="text" [value]="style.property"> and <input type="text" [value]="style.value">
+      <input type="text" [(ngModel)]="style.property"> and <input type="text" [(ngModel)]="style.value">
     </div>
   </div>
 </div>

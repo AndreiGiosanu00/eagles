@@ -27,11 +27,7 @@ export class MenuComponent implements OnInit {
   getIframeDOM(e: any) {
     e.preventDefault();
     const myIframe = document.getElementsByTagName("iframe")[0];
-    this.parserService.element.text = "alalala";
-    this.parserService.element.styles.push({
-      property: "color",
-      value: "red"
-    })
+    console.log(this.parserService.element)
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
   }
 
