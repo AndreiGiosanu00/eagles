@@ -5,6 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class ParserService {
   element: any;
-
+  originalElement = [];
   constructor() { }
 }
