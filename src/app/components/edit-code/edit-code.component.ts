@@ -25,6 +25,10 @@ export class EditCodeComponent implements OnInit {
 
   deleteElement() {
     // delete code
+    const myIframe = document.getElementsByTagName("iframe")[0];
+    this.parserService.element.delete = true;
+    myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
+    this.parserService.element.delete = false;
   }
 
 }
