@@ -74,6 +74,14 @@ export class EditCodeComponent implements OnInit {
   }
 
   open(content) {
+    this.newElement = {
+      tag: '',
+      text: '',
+      classList: '',
+      styles: [],
+      src: ''
+    };
+    this.selectValue = 'None';
     this.modalService.open(content, this.modalOptions).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
