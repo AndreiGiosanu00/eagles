@@ -101,13 +101,11 @@ export class EditCodeComponent implements OnInit {
 
   setSelectedValue(value: any) {
     this.selectValue = value;
-    console.log(this.selectValue);
   }
 
   addNewElement() {
     // add element code  this.newElement
     this.newElement.tag = this.selectValue.toLowerCase();
-    console.log(this.newElement);
     const myIframe = document.getElementsByTagName("iframe")[0];
     this.parserService.element.newElement = this.newElement;
     myIframe.contentWindow.postMessage(JSON.stringify(this.parserService.element), 'http://localhost:3000');
